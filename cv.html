@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Adli Zain Pribadi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Settings for A4 Print */
+        @page {
+            size: A4;
+            margin: 0; 
+        }
+
+        :root {
+            --bg-gray: #e2e4e5;
+            --main-white: #ffffff;
+            --blue-accent: #2e86c1;
+            --text-dark: #222222;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            color: var(--text-dark);
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .a4-container {
+            width: 210mm;
+            height: 297mm;
+            background-color: var(--main-white);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            box-sizing: border-box;
+        }
+
+        /* Top Gray Bar Decor */
+        .top-bar-decor {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: var(--bg-gray);
+            z-index: 0;
+        }
+
+        /* --- LEFT SIDEBAR --- */
+        .sidebar {
+            width: 35%;
+            height: 100%;
+            background-color: var(--bg-gray);
+            position: relative;
+            z-index: 1;
+            padding: 80px 30px 40px 30px; /* Padding for content */
+            box-sizing: border-box;
+            border-top-right-radius: 60px; /* Curve that matches the design */
+            margin-top: 40px; 
+            border-bottom-right-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+
+        /* Profile Picture */
+        .profile-pic-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 6px solid var(--blue-accent);
+            object-fit: cover;
+            background-color: #fff;
+        }
+
+        /* Sidebar Section Titles */
+        .sidebar h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--blue-accent);
+            font-size: 13pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            margin-top: 25px;
+            letter-spacing: 1px;
+        }
+
+        /* Sidebar Data Sets */
+        .data-item {
+            margin-bottom: 15px;
+            font-size: 9pt;
+            line-height: 1.3;
+        }
+
+        .data-item strong {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .data-item span {
+            display: block;
+        }
+
+        .sidebar a {
+            color: #c0392b;
+            text-decoration: none;
+        }
+        
+        /* Hobi specific */
+        .hobi-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 9.5pt;
+        }
+        
+        .hobi-list li {
+            margin-bottom: 4px;
+        }
+
+        /* --- RIGHT MAIN CONTENT --- */
+        .main-content {
+            width: 65%;
+            height: 100%;
+            padding: 60px 40px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Title */
+        .cv-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 34pt;
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            margin-top: 50px;
+        }
+
+        /* Main Content Section Titles */
+        .main-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13pt;
+            color: #111;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--blue-accent);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            margin-top: 35px;
+        }
+
+        /* Row Layouts for Education & Experience */
+        .row-item {
+            display: flex;
+            margin-bottom: 15px;
+            font-size: 10pt;
+            line-height: 1.5;
+        }
+
+        .row-year {
+            width: 120px;
+            flex-shrink: 0;
+            font-weight: 700;
+        }
+
+        .row-details {
+            flex-grow: 1;
+        }
+
+        .row-details .sub-info {
+            font-size: 9.5pt;
+            color: #555;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* Skills List */
+        .skills-list {
+            padding-left: 20px;
+            font-size: 10pt;
+            line-height: 1.6;
+        }
+
+        .skills-list li {
+            margin-bottom: 12px;
+        }
+
+        /* Print Settings */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .a4-container {
+                box-shadow: none;
+                margin: 0;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        /* Print Button */
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--blue-accent);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .print-btn:hover {
+            background-color: #1f618d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="a4-container">
+        <!-- Top Grey Bar decor behind everything -->
+        <div class="top-bar-decor"></div>
+
+        <!-- LEFT SIDEBAR -->
+        <div class="sidebar">
+            <div class="profile-pic-container">
+                <!-- Using the generated profile picture from earlier -->
+                <img src="assets/profile.png" alt="Profile Foto" class="profile-pic">
+            </div>
+
+            <h2>DATA PRIBADI</h2>
+            
+            <div class="data-item">
+                <strong>Nama</strong>
+                <span>Adli Zain Pribadi</span>
+            </div>
+            
+            <div class="data-item">
+                <strong>Tempat, Tanggal Lahir</strong>
+                <span>Bandung, 15 Agustus 2000</span>
+            </div>
+            
+            <div class="data-item">
+                <strong>Jenis Kelamin</strong>
+                <span>Laki-Laki</span>
+            </div>
+            
+            <div class="data-item">
+                <strong>Agama</strong>
+                <span>Islam</span>
+            </div>
+            
+            <div class="data-item">
+                <strong>Alamat</strong>
+                <span>Manggahang RT 02 RW 01, Kec.<br>Baleendah, Kab. Bandung, Jawa Barat</span>
+            </div>
+            
+            <div class="data-item">
+                <strong>Tinggi Badan</strong>
+                <span>170 cm</span>
+            </div>
+            
+            <div class="data-item">
+                <strong>Berat Badan</strong>
+                <span>65 kg</span>
+            </div>
+            
+            <div class="data-item">
+                <strong>Golongan Darah</strong>
+                <span>O+</span>
+            </div>
+
+            <h2>KONTAK</h2>
+
+            <div class="data-item">
+                <strong>HANDPHONE:</strong>
+                <span>0821-XX72-4552</span>
+            </div>
+
+            <div class="data-item">
+                <strong>EMAIL:</strong>
+                <span><a href="mailto:adli.zain@gmail.com">adli.zain@gmail.com</a><br>
+                <a href="mailto:adli.zain1508@student.unibba.ac.id">adli.zain1508@student.unibba.ac.id</a></span>
+            </div>
+
+            <h2>HOBI</h2>
+            <ul class="hobi-list">
+                <li>1. Pemrograman (Coding)</li>
+                <li>2. Olahraga</li>
+                <li>3. Travelling</li>
+            </ul>
+        </div>
+
+        <!-- RIGHT MAIN CONTENT -->
+        <div class="main-content">
+            <div class="cv-title">
+                CURRICULUM<br>VITAE
+            </div>
+
+            <h2>PENDIDIKAN FORMAL</h2>
+            
+            <div class="row-item">
+                <div class="row-year">2007-2013</div>
+                <div class="row-details">: SD Negeri 2 Margahayu</div>
+            </div>
+            <div class="row-item">
+                <div class="row-year">2013-2016</div>
+                <div class="row-details">: SMP Negeri 1 Baleendah</div>
+            </div>
+            <div class="row-item">
+                <div class="row-year">2016-2019</div>
+                <div class="row-details">: SMA Negeri 1 Baleendah</div>
+            </div>
+            <div class="row-item">
+                <div class="row-year">2020-2024</div>
+                <div class="row-details">: Program Studi Teknik Informatika, Fakultas <br>
+                Teknologi Informasi, Universitas Bale Bandung</div>
+            </div>
+
+            <h2>PENGALAMAN & PROYEK KARYA</h2>
+            
+            <div class="row-item">
+                <div class="row-year">2023</div>
+                <div class="row-details">: Asisten Laboratorium Informatika Universitas Bale Bandung<br>
+                <span class="sub-info">(Mengajar kelas Algoritma dan Struktur Data)</span></div>
+            </div>
+            <div class="row-item">
+                <div class="row-year">2024</div>
+                <div class="row-details">: Software Engineer Intern di Tech Nusantara<br>
+                <span class="sub-info">(Mengembangkan sistem Microservices Golang)</span></div>
+            </div>
+            <div class="row-item">
+                <div class="row-year">2024</div>
+                <div class="row-details">: Pengembang Utama - Smart Analytics Dashboard Enterprise<br>
+                <span class="sub-info">(React.js, Node.js, MongoDB)</span></div>
+            </div>
+            <div class="row-item">
+                <div class="row-year">2024</div>
+                <div class="row-details">: Riset AI Edge Object Detection untuk Lalu Lintas<br>
+                <span class="sub-info">(Python, TensorFlow Lite, OpenCV)</span></div>
+            </div>
+
+            <h2>KETERAMPILAN</h2>
+            <ul class="skills-list">
+                <li>Mampu mengoperasikan serta merancang aplikasi menggunakan bahasa pemrograman Python, JavaScript (React & Node.js), dan Golang.</li>
+                <li>Mampu merancang antarmuka berbasis web (HTML, CSS, UI/UX Design).</li>
+                <li>Mampu memanipulasi dan memelihara pemrosesan basis data relasional seperti PostgreSQL, MySQL, dan sistem NoSQL (MongoDB).</li>
+                <li>Mampu mengoperasikan perangkat <em>Machine Learning</em> dasar serta adaptasi kecerdasan buatan (*AI*) untuk deteksi objek.</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- Cetak PDF Button -->
+    <button class="no-print print-btn" onclick="window.print()">Cetak CV Sekarang!</button>
+
+</body>
+</html>
